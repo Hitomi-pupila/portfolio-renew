@@ -1,0 +1,338 @@
+filters:
+plugins:
+  '@textlint/text':
+      'extensions':
+        - '.ejs'
+rules:
+  # 半角カナ
+  # https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール
+  no-hankaku-kana: true
+
+  # 康煕部首
+  # https://creators.demo.mitsue.com/-/qc/inspection.html
+  no-kangxi-radicals: true
+
+  # NFDの濁点・半濁点
+  # https://creators.demo.mitsue.com/fsg/html/#_0警告・0エラー
+  no-nfd: true
+
+  # 専用ルールがないもの
+  "@textlint-rule/pattern":
+    patterns:
+      # NBSP
+      - message: 空白は半角空白（もしくは全角空白）を利用します。もしかしてNBSPを利用していませんか？（https://creators.demo.mitsue.com/-/qc/inspection.html）
+        pattern: /\p{gc=Zs}/
+        replace: " "
+        allows:
+        - /[ \u{3000}]/
+
+      # VTやZWSP
+      - message: 画面表示を意図していない文字は利用しません。もしかしてVTやZWSPを利用していませんか？（https://creators.demo.mitsue.com/-/qc/inspection.html）
+        pattern: /\p{gc=Other}/
+        replace: ""
+        allows:
+        - /[\t\r\n\u{200D}]/
+
+      # 全角英数
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "０"
+        replace: "0"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "１"
+        replace: "1"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "２"
+        replace: "2"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "３"
+        replace: "3"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "４"
+        replace: "4"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "５"
+        replace: "5"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "６"
+        replace: "6"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "７"
+        replace: "7"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "８"
+        replace: "8"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "９"
+        replace: "9"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ａ"
+        replace: "A"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｂ"
+        replace: "B"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｃ"
+        replace: "C"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｄ"
+        replace: "D"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｅ"
+        replace: "E"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｆ"
+        replace: "F"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｇ"
+        replace: "G"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｈ"
+        replace: "H"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｉ"
+        replace: "I"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｊ"
+        replace: "J"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｋ"
+        replace: "K"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｌ"
+        replace: "L"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｍ"
+        replace: "M"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｎ"
+        replace: "N"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｏ"
+        replace: "O"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｐ"
+        replace: "P"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｑ"
+        replace: "Q"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｒ"
+        replace: "R"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｓ"
+        replace: "S"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｔ"
+        replace: "T"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｕ"
+        replace: "U"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｖ"
+        replace: "V"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｗ"
+        replace: "W"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｘ"
+        replace: "X"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｙ"
+        replace: "Y"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "Ｚ"
+        replace: "Z"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ａ"
+        replace: "a"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｂ"
+        replace: "b"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｃ"
+        replace: "c"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｄ"
+        replace: "d"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｅ"
+        replace: "e"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｆ"
+        replace: "f"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｇ"
+        replace: "g"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｈ"
+        replace: "h"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｉ"
+        replace: "i"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｊ"
+        replace: "j"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｋ"
+        replace: "k"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｌ"
+        replace: "l"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｍ"
+        replace: "m"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｎ"
+        replace: "n"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｏ"
+        replace: "o"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｐ"
+        replace: "p"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｑ"
+        replace: "q"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｒ"
+        replace: "r"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｓ"
+        replace: "s"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｔ"
+        replace: "t"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｕ"
+        replace: "u"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｖ"
+        replace: "v"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｗ"
+        replace: "w"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｘ"
+        replace: "x"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｙ"
+        replace: "y"
+      - message: 英数字は半角とする（https://directors.demo.mitsue.com/strategy/notation.html#表記統一-表記の揺れ-ルール）
+        pattern: "ｚ"
+        replace: "z"
+
+      # 文字参照
+      - message: 「‘」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&lsquo;"
+        replace: "‘"
+      - message: 「’」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&rsquo;"
+        replace: "’"
+      - message: 「“」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&ldquo;"
+        replace: "“"
+      - message: 「”」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&rdquo;"
+        replace: "”"
+      - message: 「©」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&copy;"
+        replace: "©"
+      - message: 「®」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&reg;"
+        replace: "®"
+      - message: 「Ⅰ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8544;"
+        replace: "Ⅰ"
+      - message: 「Ⅱ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8545;"
+        replace: "Ⅱ"
+      - message: 「Ⅲ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8546;"
+        replace: "Ⅲ"
+      - message: 「Ⅳ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8547;"
+        replace: "Ⅳ"
+      - message: 「Ⅴ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8548;"
+        replace: "Ⅴ"
+      - message: 「Ⅵ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8549;"
+        replace: "Ⅵ"
+      - message: 「Ⅶ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8550;"
+        replace: "Ⅶ"
+      - message: 「Ⅷ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8551;"
+        replace: "Ⅷ"
+      - message: 「Ⅸ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8552;"
+        replace: "Ⅸ"
+      - message: 「Ⅹ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8553;"
+        replace: "Ⅹ"
+      - message: 「Ⅺ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8554;"
+        replace: "Ⅺ"
+      - message: 「Ⅻ」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#8555;"
+        replace: "Ⅻ"
+      - message: 「①」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9312;"
+        replace: "①"
+      - message: 「②」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9313;"
+        replace: "②"
+      - message: 「③」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9314;"
+        replace: "③"
+      - message: 「④」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9315;"
+        replace: "④"
+      - message: 「⑤」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9316;"
+        replace: "⑤"
+      - message: 「⑥」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9317;"
+        replace: "⑥"
+      - message: 「⑦」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9318;"
+        replace: "⑦"
+      - message: 「⑧」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9319;"
+        replace: "⑧"
+      - message: 「⑨」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9320;"
+        replace: "⑨"
+      - message: 「⑩」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9321;"
+        replace: "⑩"
+      - message: 「⑪」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9322;"
+        replace: "⑪"
+      - message: 「⑫」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9323;"
+        replace: "⑫"
+      - message: 「⑬」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9324;"
+        replace: "⑬"
+      - message: 「⑭」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9325;"
+        replace: "⑭"
+      - message: 「⑮」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9326;"
+        replace: "⑮"
+      - message: 「⑯」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9327;"
+        replace: "⑯"
+      - message: 「⑰」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9328;"
+        replace: "⑰"
+      - message: 「⑱」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9329;"
+        replace: "⑱"
+      - message: 「⑲」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9330;"
+        replace: "⑲"
+      - message: 「⑳」は文字参照を使わずに表記する（https://creators.demo.mitsue.com/fsg/html/#文字参照と文字コード）
+        pattern: "&#9331;"
+        replace: "⑳"

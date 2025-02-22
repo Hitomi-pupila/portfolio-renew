@@ -1,0 +1,17 @@
+extends:
+  - stylelint-config-recommended-scss
+plugins:
+  - stylelint-order
+customSyntax: postcss-scss
+ignoreFiles:
+  - src/styles/_base/**
+  - src/styles/_common/**
+rules:
+  # stylelint-order
+  order/properties-alphabetical-order: true
+
+  # stylelint-scss(Override)
+  scss/at-mixin-argumentless-call-parentheses: null
+  scss/comment-no-empty: null
+  scss/load-no-partial-leading-underscore: null
+  scss/operator-no-newline-after: null

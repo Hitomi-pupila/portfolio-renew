@@ -1,0 +1,26 @@
+dist/
+
+# Directory
+.cache/
+.git/
+.npm/
+.sass-cache/
+.svn/
+.vlint/
+node_modules/
+.DS_Store/
+
+# Files
+Thumbs.db
+*.exe
+*.bak
+*.log
+*.dll
+*.lib
+
+# Sourcemap
+*.map
+
+# husky
+.husky/*
+!.husky/pre-commit
