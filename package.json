@@ -1,0 +1,19 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hitomi-pupila/sample.git"
+  },
+  "author": "Hitomi Machida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitomi-pupila/sample/issues"
+  },
+  "homepage": "https://github.com/Hitomi-pupila/sample#readme",
+  "description": ""
+}
