@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="<%= language -%>">
+<%
+/*
+  frontmatterで定義されたデータからlink要素を生成
+  @param  {array} links link要素として反映したいデータ
+  @return {string} データから生成したlink要素
+*/
+getMetaLink = (links) => {
+  if(!links) return;
+
+  let items = '';
+
+  links.forEach((item)=> {
+    items += `<link ${item}>\n`
+  })
+
+  return items;
+}
+
+/*
+  frontmatterで定義されたデータからscript要素を生成
+  @param  {array} scripts script要素として反映したいデータ
+  @return {string} データから生成したscript要素
+*/
+getMetaScript = (scripts) => {
+  if(!scripts) return;
+
+  let items = '';
+
+  scripts.forEach((item)=> {
+    items += `<script ${item}></script>\n`
+  })
+
+  return items;
+}
+-%>
+<head prefix="og: https://ogp.me/ns#">
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="<%= description -%>">
+
+<title><%= title -%></title>
+
+<%- getMetaLink(headLink) -%>
+
+<%- getMetaScript(headScript) -%>
+
+</head>
+
+
+
+
+<body>
+<div class="l-wrap">
+
+<% if (top) { -%>
+<% if (language !== 'en') { -%>
+<% if (!public) { -%>
+<!--#include virtual="/common/include/header-top.html" -->
+<% } else { -%>
+<!--#include virtual="/common/include/header-topPublic.html" -->
+<% } -%>
+<% } else { -%>
+<% if (!public) { -%>
+<!--#include virtual="/en/common/include/header-topEn.html" -->
+<% } else { -%>
+<!--#include virtual="/en/common/include/header-topPublicEn.html" -->
+<% } -%>
+<% } -%>
+<% } else { -%>
+<% if (language !== 'en') { -%>
+<!--#include virtual="/common/include/header.html" -->
+<% } else { -%>
+<!--#include virtual="/en/common/include/header-en.html" -->
+<% } -%>
+<% } -%>
+
+
+
+
+<% if (breadcrumbs.length > 0) { -%>
+<%- include('/body-breadcrumbs') -%>
+
+
+
+
+<% } -%>
+<%- content -%>
+
+
+
+
+<% if (language !== 'en') { -%>
+<!--#include virtual="/common/include/footer.html" -->
+<% } else { -%>
+<!--#include virtual="/en/common/include/footer-en.html" -->
+<% } -%>
+</div><!-- /.l-wrap -->
+
+
+<!--#include virtual="/common/include/body-svg.html" -->
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<div class="l-breadcrumb">
+<div class="l-breadcrumb__inner">
+<ul class="l-breadcrumb__list">
+<% breadcrumbs.forEach((item, index) => { -%>
+<% for (property in item) { -%>
+<% if (breadcrumbs.length === index + 1) { -%>
+<%# リストの最後はカレント -%>
+<li class="l-breadcrumb__item">
+<a class="l-breadcrumb__link" aria-current="true"><%= property %></a>
+</li>
+<% } else { -%>
+<%# カレント以外 -%>
+<% if (item[property]) { -%>
+<%# リンク先の指定があるとき -%>
+<li class="l-breadcrumb__item">
+<a class="l-breadcrumb__link" href="<%= item[property] %>"><%= property %></a>
+</li>
+<% } else { -%>
+<%# リンク先の指定がないとき -%>
+<li class="l-breadcrumb__item">
+<span class="l-breadcrumb__link"><%= property %></span>
+</li>
+<% } -%>
+<% } -%>
+<% } -%>
+<% }); -%>
+</ul>
+</div>
+</div><!-- /.l-breadcrumb  -->

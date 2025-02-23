@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hitomi-pupila/sample.git"
+    "url": "https://github.com/Hitomi-pupila/sample.git"
   },
   "author": "Hitomi Machida",
   "license": "ISC",
@@ -37,10 +37,10 @@
     "textlint": "^14.4.2",
     "textlint-rule-no-hankaku-kana": "^2.0.1",
     "textlint-rule-no-kangxi-radicals": "^0.2.2",
-    "textlint-rule-no-nfd": "^2.0.2"
+    "textlint-rule-no-nfd": "^2.0.2",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1",
-    "rimraf": "^6.0.1"
+    "normalize.css": "^8.0.1"
   }
 }
