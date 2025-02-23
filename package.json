@@ -25,7 +25,8 @@
     "lint:textlint": "textlint src/pages/**/*.ejs",
     "lint:markuplint": "markuplint src/pages/**/*.ejs",
     "lint:eslint": "eslint -c .eslintrc.js src/scripts/**/*.js",
-    "lint:stylelint": "stylelint src/styles/**/*.scss"
+    "lint:stylelint": "stylelint src/styles/**/*.scss",
+    "precommit": "lint-staged --no-stash"
   },
   "repository": {
     "type": "git",
@@ -60,7 +61,8 @@
     "textlint": "^14.4.2",
     "textlint-rule-no-hankaku-kana": "^2.0.1",
     "textlint-rule-no-kangxi-radicals": "^0.2.2",
-    "textlint-rule-no-nfd": "^2.0.2"
+    "textlint-rule-no-nfd": "^2.0.2",
+    "lint-staged": "^15.4.3"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
