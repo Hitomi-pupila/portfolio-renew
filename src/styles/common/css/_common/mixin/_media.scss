@@ -1,0 +1,31 @@
+@use '../../_base/argument' as *;
+
+// メディアクエリを設定
+// @param {'pc' | 'sp' | 'hover'} $type       - メディアクエリのサポート範囲
+// @param {Number}                $breakpoint - ブレークポイント（単位つき）
+// =============================================================================
+@mixin media($type: '', $breakpoint: $MAJOR_BREAKPOINT) {
+  $typeMap: (
+    sp: (
+      max-width: $breakpoint - 1px,
+    ),
+    pc: (
+      min-width: $breakpoint,
+    ),
+    hover: (
+      hover: hover,
+    )
+    and
+    (
+      min-width: $breakpoint,
+    ),
+  );
+
+  @if map-has-key($typeMap, $type) {
+    @media #{inspect(map-get($typeMap, $type))} {
+      @content;
+    }
+  } @else {
+    @error '引数$typeは必須です。';
+  }
+}

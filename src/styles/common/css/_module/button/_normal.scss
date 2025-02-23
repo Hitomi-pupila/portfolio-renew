@@ -1,0 +1,78 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-button
+// =============================================================================
+.m-button {
+  --local-foreground: var(--COLOR_BACKGROUND_LIGHT);
+  --local-background: var(--COLOR_BRAND_PRIMARY);
+  --local-outline: var(--COLOR_BRAND_PRIMARY);
+
+  align-items: center;
+  background-color: var(--local-background);
+  border: 1px solid var(--local-outline);
+  color: var(--local-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  fill: var(--local-foreground);
+  font-size: func.px-to-rem(14);
+  font-weight: 700;
+  gap: 0.5em;
+  justify-content: center;
+  line-height: 1.5;
+  min-width: 240px;
+  padding: 16px 40px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(16);
+    padding: 16px 50px;
+  }
+
+  &:not([target=_blank]) {
+    &::before {
+      @include mixin.pseudo;
+      border-color: currentColor currentColor transparent transparent;
+      border-style: solid;
+      border-width: 2px 2px 0 0;
+      bottom: 0;
+      height: 10px;
+      right: 24px;
+      top: 50%;
+      transform: rotate(45deg) translateX(-50%);
+      width: 10px;
+    }
+  }
+
+  &:has(> .m-link__icon) {
+    .m-link__icon {
+      fill: var(--COLOR_BASE_LIGHT);
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  @include mixin.hover {
+    --local-foreground: var(--COLOR_BRAND_PRIMARY);
+    --local-background: var(--COLOR_FOREGROUND_LIGHT);
+    --local-outline: var(--COLOR_BRAND_PRIMARY);
+
+    &:has(> .m-link__icon) {
+      .m-link__icon {
+        fill: var(--COLOR_BRAND_PRIMARY);
+      }
+    }
+  }
+}
+
+.m-button-layout {
+  display: flex;
+  margin-top: 24px;
+}

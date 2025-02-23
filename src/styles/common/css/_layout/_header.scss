@@ -1,0 +1,77 @@
+@use '../_base/variable' as *;
+@use '../_base/argument' as *;
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// ヘッダー
+// =============================================================================
+// .l-header
+// ===============================================
+.l-header {
+  background-color: var(--COLOR_BASE_LIGHT);
+  grid-area: header;
+  position: relative;
+  z-index: var(--Z_INDEX_HEADER);
+}
+
+.l-header__outer {
+  @extend %structure-outer;
+}
+
+.l-header__inner {
+  @extend %structure-inner;
+  height: 50px;
+
+  @include mixin.media(pc) {
+    height: 70px;
+  }
+}
+
+.l-header__logo {
+  display: block;
+  height: 100%;
+  margin-left: 16px;
+
+  @media screen and (min-width: $MINOR_BREAKPOINT) {
+    margin-left: 20px;
+  }
+}
+
+.l-header__logoFlex {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.l-header__logo-branding {
+  display: block;
+  width: 125px;
+
+  @include mixin.media(pc) {
+    width: 228px;
+  }
+}
+
+.l-header__logo-secondary {
+  margin-right: 70px;
+  width: 65px;
+
+  @include mixin.media(pc) {
+    margin-right: 120px;
+    width: 105px;
+  }
+}
+
+.l-header__logo--public {
+  .l-header__logo-secondary {
+    margin-right: 0;
+  }
+
+  margin: 0 16px;
+
+  @media screen and (min-width: $MINOR_BREAKPOINT) {
+    margin: 0 20px;
+  }
+}

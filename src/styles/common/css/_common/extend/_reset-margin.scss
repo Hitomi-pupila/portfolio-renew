@@ -1,0 +1,11 @@
+// :first-childの上方向、:last-childの下方向マージンを0に
+// =============================================================================
+%reset-margin {
+  > :first-child {
+    margin-top: 0 !important;
+  }
+
+  > :last-child {
+    margin-bottom: 0 !important;
+  }
+}

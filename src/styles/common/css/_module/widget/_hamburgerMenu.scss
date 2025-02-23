@@ -1,0 +1,7 @@
+@use '../../_base/argument' as *;
+
+body {
+  &.is-overflow-hidden {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,106 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-panel
+// =============================================================================
+.m-panel-link {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+
+    > a {
+        text-decoration: none;
+    }
+
+    @include mixin.hover {
+        .m-panel-link__img {
+            > img {
+                opacity: 0.6;
+            }
+
+            > picture {
+                > img {
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        .m-panel-link__title {
+            text-decoration: underline;
+        }
+    }
+}
+
+.m-panel-link__contents {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.m-panel-link__img {
+    display: contents;
+
+    > img {
+        transition: opacity .4s;
+    }
+
+    > picture {
+        display: contents;
+
+        > img {
+            transition: opacity .4s;
+        }
+    }
+}
+
+.m-panel-link__title {
+    background-color: var(--COLOR_BASE_DARK);
+    color: var(--COLOR_BASE_LIGHT);
+    font-size: var(--FONT_SIZE);
+    font-weight: 700;
+    padding: 14px 60px;
+    position: relative;
+    text-align: center;
+
+    &::before {
+        @include mixin.pseudo;
+        border-color: var(--COLOR_BASE_LIGHT) var(--COLOR_BASE_LIGHT) transparent transparent;
+        border-radius: 2px;
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+        bottom: 0;
+        height: 8px;
+        right: 36px;
+        top: 50%;
+        transform: rotate(45deg) translateY(-50%);
+        width: 8px;
+    }
+}
+
+.m-panel-link-list {
+    list-style-type: none;
+    margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+
+    .m-panel-link {
+        margin-top: 0;
+    }
+
+    .m-panel-link__contents {
+        flex: 1;
+    }
+
+    .m-panel-link__title {
+        @include mixin.media(sp) {
+            font-size: func.px-to-rem(14);
+            padding: 3px 60px;
+        }
+    }
+}
+
+@include mixin.media(sp) {
+    .m-panel-link__contents {
+        flex: 1;
+    }
+}

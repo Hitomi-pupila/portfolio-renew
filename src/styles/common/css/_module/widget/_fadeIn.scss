@@ -1,0 +1,20 @@
+.js-fadeIn {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html[data-script-enabled="true"] {
+  .js-fadeIn {
+      filter: blur(10px);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s, transform .7s, filter .4s;
+
+      &.is-fadeIn {
+          filter: blur(0);
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+}

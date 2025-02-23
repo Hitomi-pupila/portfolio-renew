@@ -1,0 +1,33 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// width
+// =============================================================================
+$widthMap: (
+  1\/2: 50%,
+  1\/3: 33.333333%,
+  1\/4: 25%,
+  1\/5: 20%,
+  1\/6: 16.666667%,
+);
+
+@each $key, $value in $widthMap {
+  .w-#{$key} {
+    width: $value;
+  }
+}
+
+$widthLoopStart: 0;
+$widthLoopMax: 10;
+$widthLoopStep: 8;
+$widthUnit: '';
+
+@for $i from $widthLoopStart through $widthLoopMax {
+  $widthnUnit: if(($i * $widthLoopStep) > 0, 'px', '');
+
+  .w-#{$i * $widthLoopStep} {
+    width: #{$i * $widthLoopStep}#{$widthnUnit};
+  }
+}

@@ -1,0 +1,42 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-box-arrow
+// =============================================================================
+.m-box-arrow {
+  @extend %reset-margin;
+
+  margin-top: var(--SIZE_MODULE_MARGIN);
+}
+
+.m-box-arrow + .m-box-arrow {
+  margin-top: calc(32px + 22px); // モジュールの余白 + アローの高さ
+  position: relative;
+
+  // arrow
+  &::before {
+    @include mixin.pseudo;
+    background-color: var(--COLOR_BRAND_PRIMARY);
+    bottom: calc(100% + 16px); // ボックスの高さ + モジュールの余白
+    clip-path: polygon(50% 100%, 100% 0,0 0);
+    height: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+  }
+}
+
+@include mixin.media(pc) {
+  .m-box-arrow + .m-box-arrow {
+    margin-top: calc(40px + 24px); // モジュールの余白 + アローの高さ
+
+    // arrow
+    &::before {
+      bottom: calc(100% + 20px); // ボックスの高さ + モジュールの余白
+      height: 24px;
+      width: 62px;
+    }
+  }
+}

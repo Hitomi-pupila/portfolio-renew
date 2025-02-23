@@ -1,0 +1,67 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-link
+// =============================================================================
+.m-link {
+  color: var(--COLOR_BASE_DARK);
+  display: inline-block;
+  font-weight: 700;
+  margin-top: 16px;
+  padding-left: 1.25em;
+  position: relative;
+  text-decoration: none;
+
+  @include mixin.hover {
+    color: var(--COLOR_BRAND_PRIMARY);
+    text-decoration: underline;
+
+    .m-link__icon {
+      fill: var(--COLOR_BRAND_PRIMARY);
+    }
+  }
+
+  // arrow
+  &::before {
+    @include mixin.pseudo;
+    border-color: var(--COLOR_BRAND_PRIMARY) var(--COLOR_BRAND_PRIMARY) transparent transparent;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    bottom: 0;
+    height: 8px;
+    left:0;
+    top: 11px;
+    transform: rotate(45deg);
+    width: 8px;
+  }
+}
+
+.m-link__icon {
+  display: inline-block;
+  fill: var(--COLOR_BASE_DARK);
+  height: auto;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  position: relative;
+  top: 0.125em;
+  width: 1em;
+}
+
+// .m-link-text
+// =============================================================================
+.m-link-text {
+  color: var(--COLOR_BRAND_PRIMARY);
+  font-weight: 700;
+  transition: opacity .2s;
+
+  @include mixin.hover {
+    opacity: 0.7;
+  }
+
+  .m-link__icon {
+    fill: var(--COLOR_BRAND_PRIMARY);
+  }
+}

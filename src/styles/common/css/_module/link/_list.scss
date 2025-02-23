@@ -1,0 +1,20 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-link-list
+// =============================================================================
+.m-link-list {
+  @include mixin.layout($gapSP: 8px 24px, $gapPC: 8px 32px);
+
+  margin-top: var(--SIZE_MODULE_MARGIN);
+}
+
+.m-link-list__item {
+  list-style: none;
+
+  > .m-link {
+    margin-top: 0;
+  }
+}

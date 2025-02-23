@@ -1,0 +1,56 @@
+@use '../mixin/media' as *;
+
+// コンテンツをカラム状に分割
+// @param {Number} $gapSP      - SP幅時の gap プロパティの値
+// @param {Number} $gapPC      - PC幅時の gap プロパティの値
+// @param {Number} $layoutLoop - ループ回数
+// =============================================================================
+@mixin layout($gapSP: 16px, $gapPC: 16px, $layoutLoop: 6) {
+  display: grid;
+
+  > * {
+    height: 100%;
+  }
+
+  // SP Viewport
+  @include media(sp) {
+    gap: $gapSP;
+
+    &[data-column-sp='auto'] {
+      display: flex;
+      flex-wrap: wrap;
+
+      > * {
+        flex: 0 0 auto;
+        max-width: 100%;
+      }
+    }
+
+    @for $i from 2 through $layoutLoop {
+      &[data-column-sp='#{$i}'] {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+  }
+
+  // PC Viewport
+  @include media(pc) {
+    gap: $gapPC;
+
+    &[data-column-pc='auto'] {
+      display: flex;
+      flex-wrap: wrap;
+
+      > * {
+        flex: 0 0 auto;
+        max-width: 100%;
+      }
+    }
+
+    @for $i from 2 through $layoutLoop {
+      &[data-column-pc='#{$i}'] {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+  }
+}

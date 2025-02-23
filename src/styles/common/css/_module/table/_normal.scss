@@ -1,0 +1,91 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-table
+// =============================================================================
+.m-table {
+  margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #ddd;
+      border-radius: 20px;
+    }
+
+    // 横スクロールバー分の余白
+    &.m-table--scrollSP {
+      padding-bottom: 14px;
+    }
+
+    &.m-table--scrollPC {
+      padding-bottom: 20px;
+    }
+}
+
+.m-table__table {
+  background-color: var(--COLOR_BACKGROUND_LIGHT);
+  border-collapse: collapse;
+  border-left: 1px solid var(--COLOR_OUTLINE_DARK);
+  border-top: 1px solid var(--COLOR_OUTLINE_DARK);
+  table-layout: fixed;
+  width: 100%;
+}
+
+.m-table__head {
+  background-color: var(--COLOR_BACKGROUND_DARK);
+}
+
+.m-table__cell {
+  @extend %reset-margin;
+
+  border-bottom: 1px solid var(--COLOR_OUTLINE_DARK);
+  border-right: 1px solid var(--COLOR_OUTLINE_DARK);
+  padding: 16px;
+  text-align: left;
+
+  // この領域の中で使用する汎用モジュール
+  > [class^='m-'] {
+    margin-top: var(--SIZE_NESTED_MODULE_MARGIN);
+  }
+}
+
+.m-table__cell--head {
+  background-color: var(--COLOR_BACKGROUND_DARK);
+  font-weight: bold;
+}
+
+@include mixin.media(sp) {
+  .m-table--columnSP {
+    :where(.m-table__table, .m-table__head, .m-table__body, .m-table__row, .m-table__cell) {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .m-table--scrollSP {
+    overflow: auto;
+
+    :where(.m-table__table) {
+      width: $MAJOR_BREAKPOINT - 1px;
+    }
+  }
+}
+
+@include mixin.media(pc) {
+  .m-table--scrollPC {
+    overflow: auto;
+
+    :where(.m-table__table) {
+      width: $CONTENT_WIDTH_PC;
+    }
+  }
+
+  .m-table__cell {
+    padding: 16px 24px;
+  }
+}

@@ -1,0 +1,154 @@
+@use '../_base/variable' as *;
+@use '../_base/argument' as *;
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// ハンバーガーメニュー
+// =============================================================================
+// .l-hamburger
+// ===============================================
+
+// ハンバーガーメニューの罫線
+%hamburger-border {
+  background-color: var(--COLOR_BRAND_PRIMARY);
+  content: '';
+  height: 2px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 35%;
+  transform: translateX(-50%) translateY(-50%) rotate(0);
+  transition: transform 0.5s ease, top 0.5s ease, opacity 0.5s ease;
+  width: 25px;
+  z-index: var(--Z_INDEX_LAYER1);
+
+  @include mixin.media(pc) {
+    top: 40%;
+    width: 40px;
+  }
+}
+
+.l-hamburger__button {
+  background-color: var(--COLOR_BASE_LIGHT);
+  border-left: 1px solid var(--COLOR_BRAND_PRIMARY);
+  height: 35px;
+  list-style: none; // summary の▼消す
+  margin: 7.5px 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  z-index: var(--Z_INDEX_LAYER1);
+
+  @include mixin.media(pc) {
+    height: 48px;
+    margin: 12px 0;
+    width: 80px;
+  }
+
+  // ハンバーガーメニュー罫線（×）
+  &::before,
+  &::after {
+    @extend %hamburger-border;
+  }
+
+  &::before {
+    top: calc(35% - 6px);
+  }
+
+  &::after {
+    top: calc(35% + 6px);
+  }
+
+  @include mixin.media(pc) {
+    &::before,
+    &::after {
+      @extend %hamburger-border;
+    }
+
+    &::before {
+      top: calc(40% - 10px);
+    }
+
+    &::after {
+      top: calc(40% + 10px);
+    }
+  }
+}
+
+// ハンバーガーメニュー罫線（真ん中・×）
+.l-hamburger__buttonText {
+  color: var(--COLOR_BRAND_PRIMARY); // IOSで文字消えないときあるので付与
+  display: block;
+  font-size: func.px-to-rem(10);
+  padding-top: 20px;
+  text-align: center;
+  white-space: nowrap; // IOSで文字消えないときあるので付与
+
+  &::before {
+    @extend %hamburger-border;
+  }
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(12);
+    padding-top: 32px;
+  }
+}
+
+// ハンバーガーメニュー開いた時のアイコン制御
+.l-hamburger[open] {
+  .l-hamburger__button {
+    background-color: var(--COLOR_BRAND_PRIMARY);
+    height: 50px;
+    margin: 0;
+
+    &::before,
+    &::after {
+      background-color: var(--COLOR_BASE_LIGHT);
+      top: 38%;
+      width: 20px;
+    }
+
+    &::before {
+      transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+
+    &::after {
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
+
+    @include mixin.media(pc) {
+      height: 70px;
+
+      &::before,
+      &::after {
+        top: 44%;
+        width: 30px;
+      }
+    }
+  }
+
+  .l-hamburger__buttonText {
+    color: var(--COLOR_BASE_LIGHT);
+    display: block;
+    padding-top: 28px;
+
+    @include mixin.media(pc) {
+      padding-top: 43px;
+    }
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+.l-hamburger__content {
+  background-color: var(--COLOR_BASE_LIGHT);
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: var(--Z_INDEX_HEADER);
+}

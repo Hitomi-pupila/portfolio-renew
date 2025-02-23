@@ -1,0 +1,35 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// margin
+// =============================================================================
+$marginLoopStart: 0;
+$marginLoopMax: 8;
+$marginLoopStep: 8;
+$marginUnit: '';
+
+$marginArray: '', t;
+
+@each $value in $marginArray {
+  @for $i from $marginLoopStart through $marginLoopMax {
+    $marginUnit: if(($i * $marginLoopStep) > 0, 'px', '');
+
+    .mt-#{$i * $marginLoopStep} {
+      margin-top: #{$i * $marginLoopStep}#{$marginUnit};
+    }
+
+    @include mixin.media(sp) {
+      .mt-#{$i * $marginLoopStep}SP {
+        margin-top: #{$i * $marginLoopStep}#{$marginUnit};
+      }
+    }
+
+    @include mixin.media(pc) {
+      .mt-#{$i * $marginLoopStep}PC {
+        margin-top: #{$i * $marginLoopStep}#{$marginUnit};
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-list
+// =============================================================================
+.m-list {
+  @include mixin.layout($gapSP: 8px 24px, $gapPC: 8px 32px);
+
+  margin-top: var(--SIZE_MODULE_MARGIN);
+}
+
+.m-list__item {
+  list-style: none;
+  padding-left: 1em;
+  position: relative;
+
+  // bullet
+  &::before {
+    @include mixin.pseudo;
+    background-color: var(--COLOR_BRAND_PRIMARY);
+    border-radius: 50%;
+    height: 8px;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+  }
+}
+
+.m-list__text {
+  font-size: func.px-to-rem(14);
+
+  // この領域の中で使用する汎用モジュール
+  > [class^='m-'] {
+    margin-top: var(--SIZE_NESTED_MODULE_MARGIN);
+  }
+
+  // この領域の中で使用するリストモジュール
+  > [class^='m-list'],
+  > .m-link-list,
+  > .m-note {
+    margin-top: 8px;
+  }
+}
+
+@include mixin.media(pc) {
+  .m-list__text {
+    font-size: var(--FONT_SIZE);
+  }
+}

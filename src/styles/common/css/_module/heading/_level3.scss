@@ -1,0 +1,15 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+.m-heading-level3 {
+  color: var(--COLOR_BRAND_PRIMARY);
+  font-size: func.px-to-rem(20);
+  margin-top: 32px;
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(28);
+    margin-top: 48px;
+  }
+}

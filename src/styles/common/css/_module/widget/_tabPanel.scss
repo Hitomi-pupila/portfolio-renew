@@ -1,0 +1,58 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-tabPanel
+// =============================================================================
+.m-tabPanel {
+  --local-foreground: var(--COLOR_BASE_DARK);
+  --local-background: var(--COLOR_BRAND_SECONDARY);
+
+  margin-top: 40px;
+}
+
+.m-tabPanel__listItem {
+  list-style: none;
+}
+
+.m-tabPanel__link {
+  align-items: center;
+  background-color: var(--local-background);
+  color: var(--local-foreground);
+  display: flex;
+  font-size: var(--FONT_SIZE);
+  justify-content: center;
+  line-height: 1.5;
+  padding: 20px 24px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+
+  &[aria-selected='true'] {
+    font-weight: 700;
+    --local-background: var(--COLOR_BRAND_PRIMARY);
+    --local-foreground: var(--COLOR_BASE_LIGHT);
+  }
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(18);
+  }
+}
+
+.m-tabPanel__content {
+  padding: 0 10px;
+}
+
+.m-tabPanel__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.m-tabPanel__container + .m-tabPanel__control {
+  margin-top: 40px;
+
+  @include mixin.media(pc) {
+    margin-top: 80px;
+  }
+}

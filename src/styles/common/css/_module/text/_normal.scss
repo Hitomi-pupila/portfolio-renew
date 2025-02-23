@@ -1,0 +1,21 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-text
+// =============================================================================
+.m-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--SIZE_MODULE_MARGIN);
+}
+
+.m-text__item {
+  flex: 0 0 auto;
+}
+
+.m-text__item--small {
+  color: #67676b;
+  font-size: func.px-to-rem(14);
+}

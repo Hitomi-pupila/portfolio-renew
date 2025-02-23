@@ -1,0 +1,13 @@
+@use '../../_base/argument' as *;
+@use '../mixin/' as mixin;
+
+// レイアウトコンテナー
+// =============================================================================
+%structure {
+  display: grid;
+  gap: 0 $OUTSIDE_GUTTER_SP;
+  grid-template-columns:
+    1fr minmax($CONTENT_WIDTH_SP, $CONTENT_WIDTH_PC)
+    1fr;
+}
+

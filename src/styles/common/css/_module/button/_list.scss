@@ -1,0 +1,42 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-button-list
+// =============================================================================
+.m-button-list {
+  @include mixin.layout;
+
+  margin-top: 24px;
+}
+
+.m-button-list__item {
+  list-style: none;
+
+  :where(.m-button) {
+    height: 100%;
+  }
+}
+
+@include mixin.media(sp) {
+  .m-button-list {
+    &:not([data-column-sp='auto']) {
+      :where(.m-button) {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include mixin.media(pc) {
+  .m-button-list {
+    &:not([data-column-pc='auto']) {
+      :where(.m-button) {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  }
+}

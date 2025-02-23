@@ -1,0 +1,37 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-box
+// =============================================================================
+.m-box {
+  --local-foreground: var(--COLOR_FOREGROUND_DARK);
+  --local-background: var(--COLOR_BACKGROUND_LIGHT);
+  --local-outline: var(--COLOR_OUTLINE_DARK);
+
+  background-color: var(--local-background);
+  border: 1px solid var(--local-outline);
+  margin-top: 40px;
+}
+
+.m-box__body {
+  @extend %reset-margin;
+
+  padding: 24px 16px;
+
+  // この領域の中で使用する汎用モジュール
+  > [class^='m-'] {
+    margin-top: var(--SIZE_NESTED_MODULE_MARGIN);
+  }
+}
+
+@include mixin.media(pc) {
+  .m-box {
+    margin-top: 32px;
+  }
+
+  .m-box__body {
+    padding: 40px;
+  }
+}

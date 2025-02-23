@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@mixin pseudo {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus {
+      @content;
+  }
+}

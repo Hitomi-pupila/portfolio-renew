@@ -1,0 +1,44 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-media-external
+// =============================================================================
+.m-media-external {
+  margin: 24px auto 0;
+}
+
+.m-media-external__media {
+  aspect-ratio: 343 / 169;
+  position: relative;
+}
+
+.m-media-external__item {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+@include mixin.media(pc) {
+  .m-media-external {
+    margin-top: 40px;
+  }
+
+  .m-media-external__media {
+    aspect-ratio: 707 / 350;
+  }
+}
+
+@media screen and (min-width: $MINOR_BREAKPOINT) {
+  .m-media-external {
+    margin-top: 60px;
+  }
+
+  .m-media-external__media {
+    aspect-ratio: 1220 / 380;
+  }
+}

@@ -1,0 +1,12 @@
+@use '../_base/argument' as *;
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// メインビジュアル
+// =============================================================================
+// .l-mainVisual
+// ===============================================
+.l-mainVisual__media {
+  width: 100%;
+}

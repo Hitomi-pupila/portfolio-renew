@@ -1,0 +1,29 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-text-lead
+// =============================================================================
+.m-text-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.m-text-lead__item {
+  flex: 0 0 auto;
+  font-size: func.px-to-rem(18);
+  font-weight: 700;
+}
+
+@include mixin.media(pc) {
+  .m-text-lead {
+    margin-top: 32px;
+  }
+
+  .m-text-lead__item {
+    font-size: func.px-to-rem(20);
+  }
+}

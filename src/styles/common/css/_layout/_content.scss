@@ -1,0 +1,25 @@
+@use '../_base/argument' as *;
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// メインコンテンツ
+// =============================================================================
+// .l-main
+// ===============================================
+.l-main {
+  @extend %structure;
+}
+
+.l-main__outer {
+  @extend %structure-outer;
+}
+
+.l-main__inner {
+  @extend %structure-inner;
+  padding-bottom: 40px;
+
+  @include mixin.media(pc) {
+    padding-bottom: 50px;
+  }
+}

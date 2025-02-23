@@ -1,0 +1,13 @@
+// Sass Variables
+// =============================================================================
+// ブレークポイント
+$MAJOR_BREAKPOINT: 768px;
+$MINOR_BREAKPOINT: 1220px;
+
+// ウィンドウ幅がコンテンツ幅以下時の左右の余白
+$OUTSIDE_GUTTER_SP: 16px;
+
+// コンテンツ幅
+$CONTENT_WIDTH_SP: 300px - ($OUTSIDE_GUTTER_SP * 2);
+$CONTENT_WIDTH_PC: $MINOR_BREAKPOINT;
+$CONTENT_WIDTH_TAB: $MAJOR_BREAKPOINT;

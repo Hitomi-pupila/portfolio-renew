@@ -1,0 +1,30 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// justify-content
+// =============================================================================
+$justifyContentMap: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+);
+
+@each $key, $value in $justifyContentMap {
+  .justify-#{$key} {
+    justify-content: $value;
+  }
+
+  @include mixin.media(sp) {
+    .justify-#{$key}SP {
+      justify-content: $value;
+    }
+  }
+
+  @include mixin.media(pc) {
+    .justify-#{$key}PC {
+      justify-content: $value;
+    }
+  }
+}

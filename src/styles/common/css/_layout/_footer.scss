@@ -1,0 +1,54 @@
+@use '../_base/argument' as *;
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// フッター
+// =============================================================================
+// .l-footer
+// ===============================================
+.l-footer {
+  @extend %structure;
+
+  grid-area: footer;
+}
+
+.l-footer__outer {
+  @extend %structure-outer;
+}
+
+.l-footer__inner {
+  @extend %structure-inner;
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+
+  @include mixin.media(pc) {
+    height: 95px;
+  }
+}
+
+.l-footer__copyright {
+  color: var(--COLOR_BASE_DARK);
+  font-size: func.px-to-rem(8);
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(16);
+  }
+}
+
+.l-footer__logo-branding {
+  display: block;
+  width: 150px;
+
+  @include mixin.media(pc) {
+    width: 200px;
+  }
+}
+
+.l-footer__logo-branding--en {
+  @include mixin.media(pc) {
+    width: 350px;
+  }
+}

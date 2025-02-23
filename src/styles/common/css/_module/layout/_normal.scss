@@ -1,0 +1,17 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-layout
+// =============================================================================
+.m-layout {
+  margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+  @include mixin.layout;
+}
+
+.m-layout__item {
+  @extend %reset-margin;
+
+  list-style: none;
+}

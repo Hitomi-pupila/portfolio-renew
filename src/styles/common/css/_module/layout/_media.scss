@@ -1,0 +1,94 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-layout-mediaText
+// =============================================================================
+.m-layout-mediaText {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: auto fit-content(50%);
+  margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+}
+
+.m-layout-mediaText__content,
+.m-layout-mediaText__media {
+  @extend %reset-margin;
+
+  direction: ltr;
+  flex: 0 0 auto;
+
+  // この領域の中で使用する汎用モジュール
+  > [class^='m-'] {
+    margin-top: var(--SIZE_NESTED_MODULE_MARGIN);
+  }
+}
+
+@include mixin.media(sp) {
+  .m-layout-mediaText--rowReverseSP {
+    direction: rtl;
+  }
+
+  .m-layout-mediaText--columnSP,
+  .m-layout-mediaText--columnReverseSP {
+    display: flex;
+  }
+
+  .m-layout-mediaText--columnSP {
+    flex-direction: column;
+  }
+
+  .m-layout-mediaText--columnReverseSP {
+    flex-direction: column-reverse;
+  }
+}
+
+@include mixin.media(pc) {
+  .m-layout-mediaText {
+    gap: 24px;
+  }
+
+  .m-layout-mediaText--rowReversePC {
+    direction: rtl;
+  }
+
+  .m-layout-mediaText--columnPC,
+  .m-layout-mediaText--columnReversePC {
+    display: flex;
+  }
+
+  .m-layout-mediaText--columnPC {
+    flex-direction: column;
+  }
+
+  .m-layout-mediaText--columnReversePC {
+    flex-direction: column-reverse;
+  }
+}
+
+.m-layout-media {
+  display: grid;
+  gap: 16px 8px;
+  grid-auto-columns: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
+
+  > .m-media {
+    display: block;
+    margin: 0;
+    width: auto;
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  @include mixin.media(pc) {
+    gap: 32px 16px;
+  }
+
+  &--col3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

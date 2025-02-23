@@ -1,0 +1,179 @@
+@use '../_common/mixin/' as mixin;
+@use '../_common/extend/' as *;
+@use '../_common/function/' as func;
+
+// Base
+// =============================================================================
+
+// Margin, Padding Reset
+// -------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+dl,
+dt,
+dd,
+button,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  @extend %reset-margin;
+
+  background-color: var(--COLOR_BACKGROUND_LIGHT);
+  color: var(--COLOR_FOREGROUND_DARK);
+  font-family: 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+  font-size: var(--FONT_SIZE);
+  height: 100%;
+  line-height: var(--LINE_HEIGHT);
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+strong {
+  color: var(--COLOR_ROLE_DANGER_DARK);
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+sub {
+  bottom: -0.75em;
+}
+
+sup {
+  top: -0.75em;
+}
+
+a :where(img) {
+  pointer-events: none;
+}
+
+img,
+svg {
+  height: auto;
+  max-width: 100%;
+  width: auto;
+}
+
+::placeholder {
+  opacity: 1;
+}
+
+label {
+  cursor: pointer;
+}
+
+[type='text'],
+[type='date'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='week'],
+select {
+  line-height: 1;
+}
+
+[type='text'],
+[type='date'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='week'],
+select,
+textarea {
+  appearance: none;
+  border-radius: 0;
+  color: currentColor;
+  font-size: func.px-to-rem(16);
+}
+
+[type='date']::-webkit-inner-spin-button,
+[type='date']::-webkit-clear-button {
+  appearance: none;
+}
+
+[type='date']::-webkit-calendar-picker-indicator {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+textarea {
+  overflow-x: hidden;
+  overflow-y: auto;
+  resize: vertical;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+noscript {
+  display: none;
+}
+
+body:has(> .l-navLocal),
+body:has(> * .l-navLocal) {
+  :target {
+    scroll-margin-top: var(--HEIGHT_LOCAL_NAV);
+  }
+}
+
+a[href^="tel:"] {
+  @include mixin.media(pc) {
+    pointer-events: none;
+  }
+}

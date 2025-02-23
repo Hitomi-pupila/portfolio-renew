@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "run-s prebuild:*",
+    "prebuild:clean": "rimraf dist",
+    "prebuild:copy": "node -e \"require('fs-extra').copySync('public', 'dist')\"",
+    "build": "run-p build:*",
+    "build:ejs": "eleventy --config=eleventy.config.js --quiet",
+    "build:sass": "run-s build:sass:*",
+    "build:sass:compile": "sass src/styles/common/:dist/common/ --no-source-map",
+    "build:sass:postcss": "postcss dist/common/**/*.css --replace --no-map",
+    "build:js": "node -e \"require('fs-extra').copySync('src/scripts/common/', 'dist/common/')\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +29,7 @@
     "@11ty/eleventy": "^3.0.0",
     "browser-sync": "^3.0.3",
     "eslint": "^9.21.0",
+    "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss-cli": "^11.0.0",
     "postcss-sort-media-queries": "^5.2.0",
@@ -27,10 +37,10 @@
     "textlint": "^14.4.2",
     "textlint-rule-no-hankaku-kana": "^2.0.1",
     "textlint-rule-no-kangxi-radicals": "^0.2.2",
-    "textlint-rule-no-nfd": "^2.0.2",
-    "npm-run-all": "^4.1.5"
+    "textlint-rule-no-nfd": "^2.0.2"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "rimraf": "^6.0.1"
   }
 }

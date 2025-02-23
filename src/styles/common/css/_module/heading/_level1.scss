@@ -1,0 +1,41 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+.m-heading {
+  background-color: var(--COLOR_BRAND_PRIMARY);
+  color: var(--COLOR_BASE_LIGHT);
+  margin: 0 -16px;
+
+  @include mixin.media(pc) {
+    margin: 0;
+  }
+}
+
+.m-heading__inner {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  @include mixin.media(pc) {
+    padding: 27px 32px;
+  }
+}
+
+.m-heading__text {
+  font-size: func.px-to-rem(24);
+  line-height: 1.5;
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(40);
+  }
+}
+
+.m-heading__subText {
+  font-size: func.px-to-rem(12);
+
+  @include mixin.media(pc) {
+    font-size: func.px-to-rem(16);
+  }
+}

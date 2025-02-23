@@ -1,0 +1,30 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// text-align
+// =============================================================================
+$textAlignMap: (
+  left: left,
+  center: center,
+  right: right,
+);
+
+@each $key, $value in $textAlignMap {
+  .text-#{$key} {
+    text-align: $value;
+  }
+
+  @include mixin.media(sp) {
+    .text-#{$key}SP {
+      text-align: $value;
+    }
+  }
+
+  @include mixin.media(pc) {
+    .text-#{$key}PC {
+      text-align: $value;
+    }
+  }
+}

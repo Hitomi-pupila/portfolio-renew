@@ -1,0 +1,103 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-list-description
+// =============================================================================
+.m-list-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: var(--SIZE_MODULE_MARGIN);
+}
+
+.m-list-description__item {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.m-list-description__title,
+.m-list-description__content {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.m-list-description__title {
+  font-weight: bold;
+}
+
+.m-list-description__content {
+  @extend %reset-margin;
+
+  // この領域の中で使用する汎用モジュール
+  > [class^='m-'] {
+    margin-top: var(--SIZE_NESTED_MODULE_MARGIN);
+  }
+}
+
+@include mixin.media(sp) {
+  .m-list-description--rowSP {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: fit-content(30%) auto;
+
+    :where(.m-list-description__item) {
+      display: contents;
+    }
+  }
+
+  .m-list-description--inlineSP {
+    display: block;
+
+    :where(.m-list-description__item, .m-list-description__title, .m-list-description__content) {
+      display: inline;
+      width: auto;
+    }
+
+    :where(.m-list-description__item + .m-list-description__item) {
+      border-left: 1px solid var(--COLOR_OUTLINE_DARK);
+      margin-left: 8px;
+      padding-left: 8px;
+    }
+
+    :where(.m-list-description__title) {
+      margin-right: 8px;
+    }
+  }
+}
+
+@include mixin.media(pc) {
+  .m-list-description--rowPC {
+    display: grid;
+    gap: 16px 24px;
+    grid-template-columns: fit-content(30%) auto;
+
+    :where(.m-list-description__item) {
+      display: contents;
+    }
+  }
+
+  .m-list-description--inlinePC {
+    display: block;
+
+    :where(.m-list-description__item, .m-list-description__title, .m-list-description__content) {
+      display: inline;
+      width: auto;
+    }
+
+    :where(.m-list-description__item + .m-list-description__item) {
+      border-left: 1px solid var(--COLOR_OUTLINE_DARK);
+      margin-left: 16px;
+      padding-left: 16px;
+    }
+
+    :where(.m-list-description__title) {
+      margin-right: 16px;
+    }
+  }
+}

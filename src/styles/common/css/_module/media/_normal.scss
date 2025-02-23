@@ -1,0 +1,70 @@
+@use '../../_base/argument' as *;
+@use '../../_common/mixin/' as mixin;
+@use '../../_common/extend/' as *;
+@use '../../_common/function/' as func;
+
+// .m-media
+// =============================================================================
+.m-media {
+  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  margin: 24px auto 0;
+  text-align: center;
+  vertical-align: top;
+  width: fit-content;
+}
+
+.m-media__link,
+.m-media__caption,
+.m-media__item {
+  flex: 0 0 auto;
+}
+
+.m-media__link {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  vertical-align: top;
+  width: fit-content;
+
+  &:any-link {
+    color: var(--COLOR_BRAND_PRIMARY);
+    text-decoration: none;
+  }
+}
+
+.m-media__caption {
+  font-size: func.px-to-rem(12);
+  margin: 0 auto;
+  max-width: fit-content;
+  text-align: center;
+}
+
+.m-media__item {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+@include mixin.media(pc) {
+  .m-media {
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .m-media__caption {
+    font-size: func.px-to-rem(14);
+  }
+}
+
+@include mixin.media(hover) {
+  .m-media__link {
+    &:any-link {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
