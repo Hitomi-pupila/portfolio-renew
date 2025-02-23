@@ -4,8 +4,8 @@ plugins:
   - stylelint-order
 customSyntax: postcss-scss
 ignoreFiles:
-  - src/styles/_base/**
-  - src/styles/_common/**
+  - src/styles/common/css/_base/**
+  - src/styles/common/css/_common/**
 rules:
   # stylelint-order
   order/properties-alphabetical-order: true
