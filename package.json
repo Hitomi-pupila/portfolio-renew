@@ -26,7 +26,11 @@
     "lint:markuplint": "markuplint src/pages/**/*.ejs",
     "lint:eslint": "eslint -c .eslintrc.js src/scripts/**/*.js",
     "lint:stylelint": "stylelint src/styles/**/*.scss",
-    "precommit": "lint-staged --no-stash"
+    "precommit": "lint-staged --no-stash",
+    "fix": "run-p fix:*",
+    "fix:textlint": "npm run lint:textlint -- --fix",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:stylelint": "npm run lint:stylelint -- --fix"
   },
   "repository": {
     "type": "git",

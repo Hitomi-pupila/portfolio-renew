@@ -1,0 +1,6 @@
+'src/pages/**/*.ejs':
+    - npm run fix:textlint
+'src/scripts/**/*.js':
+    - npm run fix:eslint
+'src/styles/**/*.scss':
+    - npm run fix:stylelint
