@@ -1,0 +1,43 @@
+parser:
+  .ejs$: '@markuplint/ejs-parser'
+parserOptions:
+  ignoreFrontMatter: true
+excludeFiles:
+  - '**/src/pages/_data/**/*'
+  - '**/src/pages/_includes/**/*'
+rules:
+  html:
+    extends: markuplint:recommended
+  ejs:
+    attr-duplication: true
+    deprecated-attr: true
+    deprecated-element: true
+    disallowed-element: true
+    doctype: false
+    id-duplication: true
+    ineffective-attr: true
+    invalid-attr: true
+    permitted-contents: true
+    required-attr: true
+    landmark-roles: true
+    no-refer-to-non-existent-id: true
+    require-accessible-name: true
+    required-h1: false
+    use-list: true
+    wai-aria: true
+    invalid-nesting: true
+    disallowed-attr: true
+    invalid-tag-name: true
+nodeRules:
+  - selector: 'svg'
+    rules:
+      require-accessible-name: false
+  - selector: 'img'
+    rules:
+      required-attr:
+        - 'width'
+        - 'height'
+  - selector: 'iframe'
+    rules:
+      required-attr:
+        - 'title'

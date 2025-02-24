@@ -1,17 +1,28 @@
-extends:
-  - stylelint-config-recommended-scss
 plugins:
   - stylelint-order
 customSyntax: postcss-scss
 ignoreFiles:
   - src/styles/common/css/_base/**
   - src/styles/common/css/_common/**
-rules:
-  # stylelint-order
-  order/properties-alphabetical-order: true
-
-  # stylelint-scss(Override)
-  scss/at-mixin-argumentless-call-parentheses: null
-  scss/comment-no-empty: null
-  scss/load-no-partial-leading-underscore: null
-  scss/operator-no-newline-after: null
+overrides:
+  - files:
+      - "**/*.css"
+    extends:
+      - stylelint-config-recommended
+    rules:
+      block-no-empty: true
+      color-no-invalid-hex: true
+      unit-no-unknown: true
+      at-rule-no-unknown: true
+      selector-pseudo-class-no-unknown: true
+      selector-pseudo-element-no-unknown: true
+      media-feature-name-no-unknown: true
+  - files:
+      - "**/*.scss"
+    extends:
+      - stylelint-config-recommended-scss
+    rules:
+      scss/at-mixin-argumentless-call-parentheses: null
+      scss/comment-no-empty: null
+      scss/load-no-partial-leading-underscore: null
+      scss/operator-no-newline-after: null

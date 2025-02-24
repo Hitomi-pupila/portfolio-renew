@@ -26,6 +26,9 @@
     "lint:markuplint": "markuplint src/pages/**/*.ejs",
     "lint:eslint": "eslint -c .eslintrc.js src/scripts/**/*.js",
     "lint:stylelint": "stylelint src/styles/**/*.scss",
+    "validate": "run-p validate:*",
+    "validate:html": "markuplint -f Simple 'dist/**/*.+(htm|html|shtml)'",
+    "validate:css": "stylelint -f Simple dist/**/*.css",
     "precommit": "lint-staged --no-stash",
     "fix": "run-p fix:*",
     "fix:textlint": "npm run lint:textlint -- --fix",
@@ -45,6 +48,7 @@
   "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "@markuplint/ejs-parser": "^4.6.16",
     "@textlint-rule/textlint-rule-pattern": "^2.0.0",
     "browser-sync": "^3.0.3",
     "connect-ssi": "^1.1.1",
@@ -61,13 +65,13 @@
     "rimraf": "^6.0.1",
     "sass": "^1.85.0",
     "stylelint": "^16.14.1",
+    "stylelint-config-recommended": "^15.0.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-order": "^6.0.4",
     "textlint": "^14.4.2",
     "textlint-rule-no-hankaku-kana": "^2.0.1",
     "textlint-rule-no-kangxi-radicals": "^0.2.2",
-    "textlint-rule-no-nfd": "^2.0.2",
-    "w3c-validator": "^3.2.0"
+    "textlint-rule-no-nfd": "^2.0.2"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
