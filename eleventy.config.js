@@ -1,5 +1,5 @@
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addGlobalData('siteName', 'simple');
+  eleventyConfig.addGlobalData('siteName', 'PORTFORIO');
 
   return {
     dir: {
