@@ -22,7 +22,7 @@
 
   &::before {
     @include mixin.pseudo;
-    background-color: #7d94be;
+    background-color: var(--COLOR_BRAND_PRIMARY);
     height: 0;
     left: -1px;
     top: 25px;
