@@ -7,7 +7,7 @@
 // =============================================================================
 .m-layout {
   margin-top: var(--SIZE_MODULE_MARGIN_WIDE);
-  @include mixin.layout;
+  @include mixin.layout($gapSP: 32px 16px, $gapPC: 64px 16px);;
 }
 
 .m-layout__item {
