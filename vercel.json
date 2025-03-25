@@ -1,0 +1,5 @@
+{
+  "images": {
+    "formats": ["image/webp", "image/png", "image/jpeg"]
+  }
+}
