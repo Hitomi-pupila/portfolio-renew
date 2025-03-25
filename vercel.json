@@ -1,6 +1,8 @@
 {
-  "images": {
-    "formats": ["image/webp"],
-    "sizes": [256, 640, 1080, 2048, 3840]
-  }
+  "builds": [
+    {
+      "src": "dist/**",
+      "use": "@vercel/static"
+    }
+  ]
 }
