@@ -1,6 +1,6 @@
 {
   "images": {
-    "formats": ["image/webp", "image/png", "image/jpeg"],
+    "formats": ["image/webp"],
     "sizes": [256, 640, 1080, 2048, 3840]
   }
 }
