@@ -57,28 +57,7 @@ getMetaScript = (scripts) => {
 <body>
 <div class="l-wrap">
 
-<% if (top) { -%>
-<% if (language !== 'en') { -%>
-<% if (!public) { -%>
-<!--#include virtual="/common/include/header-top.html" -->
-<% } else { -%>
-<!--#include virtual="/common/include/header-topPublic.html" -->
-<% } -%>
-<% } else { -%>
-<% if (!public) { -%>
-<!--#include virtual="/en/common/include/header-topEn.html" -->
-<% } else { -%>
-<!--#include virtual="/en/common/include/header-topPublicEn.html" -->
-<% } -%>
-<% } -%>
-<% } else { -%>
-<% if (language !== 'en') { -%>
-<!--#include virtual="/common/include/header.html" -->
-<% } else { -%>
-<!--#include virtual="/en/common/include/header-en.html" -->
-<% } -%>
-<% } -%>
-
+<%- include('/header') -%>
 
 
 
@@ -94,15 +73,11 @@ getMetaScript = (scripts) => {
 
 
 
-<% if (language !== 'en') { -%>
-<!--#include virtual="/common/include/footer.html" -->
-<% } else { -%>
-<!--#include virtual="/en/common/include/footer-en.html" -->
-<% } -%>
+<%- include('/footer') -%>
 </div><!-- /.l-wrap -->
 
 
-<!--#include virtual="/common/include/body-svg.html" -->
+<%- include('/body-svg') -%>
 
 </body>
 </html>
