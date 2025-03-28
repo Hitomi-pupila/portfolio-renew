@@ -6,7 +6,7 @@
     "start": "run-p watch",
     "prebuild": "run-s prebuild:*",
     "prebuild:clean": "rimraf dist",
-    "prebuild:copy": "cp -r public dist",
+    "prebuild:copy": "node -e \"require('fs-extra').copySync('public', 'dist')\"",
     "build": "run-p build:*",
     "build:ejs": "eleventy --config=eleventy.config.js --quiet",
     "build:sass": "run-s build:sass:*",

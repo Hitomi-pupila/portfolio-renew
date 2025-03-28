@@ -1,7 +1,0 @@
-{
-  "images": {
-    "formats": ["image/webp"],
-    "sizes": [256, 640, 1080, 2048, 3840]
-  },
-  "buildCommand": "npm run prebuild && npm run build"
-}
