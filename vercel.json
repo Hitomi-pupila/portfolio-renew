@@ -4,5 +4,16 @@
       "src": "/images/(.*)",
       "dest": "/images/$1"
     }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*).webp",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/webp"
+        }
+      ]
+    }
   ]
 }
